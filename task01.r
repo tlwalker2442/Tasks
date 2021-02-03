@@ -208,3 +208,4 @@ data(mtcars)
 boxplot(mpg ~ cyl, data = mtcars)
 hist(mtcars$mpg)
 2
+
