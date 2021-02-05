@@ -49,6 +49,9 @@ source("http://jonsmitchell.com/code/plotFxn02b.R")
 unique(beren3$event)
 Question 01: 1 tells us the results, it is not a hypothesis, like the experiment has already been performed.
 Question 02: It was only the time that Beren was at daycare and did not include the data from home. 
+Hypothesis 1: amount of solids consumed vs walking skills, Does a variety of solid foods better his walking skills?
+Hypothesis 2: introduction to solid food vs number of diapers, Will solid food increase the number of diapers used?
+Hypothesis 3: naps vs walking, Do naps increase with the new skill of walking? 
 
 beren4 <- which(Data[,9] == 'naps')
 Naps <- Data[beren4,]
