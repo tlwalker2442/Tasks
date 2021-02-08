@@ -53,11 +53,39 @@ Hypothesis 1: amount of solids consumed vs walking skills, Does a variety of sol
 Hypothesis 2: introduction to solid food vs number of diapers, Will solid food increase the number of diapers used?
 Hypothesis 3: naps vs walking, Do naps increase with the new skill of walking? 
 
-beren4 <- which(Data[,9] == 'naps')
-Naps <- Data[beren4,]
-head(Naps)
-beren4 <- which(Data[,'event'] == 'nap')
-StartTimeID <- apply(beren, 1, function(x) paste(x[5:6], collapse="-"))
-StopTimeID <- apply(beren, 1, function(x) paste(x[7:8], collapse="-"))
-StartTimeID <- as.POSIXlt(StartTimeID, format='%H:%M')
-StopTimeID <- as.POSIXlt(StopTimeID, format='%H:%M)
+Hypothesis 4: The amount of solids Beren consumes increases over time. 
+setwd('C:\\Users\\tlwalker2442\\Desktop\\Evolution\\Tasks\\Task_02_c') 
+Data <- read.csv('http://jonsmitchell.com/data/beren.csv', stringsAsFactors=F)
+write.csv(Data, 'rawdata.csv', quote=F)
+length(Data)
+nrow(Data)
+ncol(Data)
+colnames(Data)
+head(Data)
+Feeds <- which(Data[,9] == 'solids')
+berenFood <- Data[Feeds,] 
+head(berenFood)
+dayID <- apply(Data, 1, function(x) paste(x[1:3], collapse='-'))
+dateID <- sapply(dayID, as.Date, format = "%Y-%m-%d", origin = "2019-04-18")
+Data$age <- dateID - dateID[which(Data$event == 'birth')]
+head(Data)
+beren4 <- Data
+beren5 <- beren4[order(beren4$age),]
+write.csv(beren5, 'beren_new.csv', quote=F, row.names=FALSE)
+Feeds <- which(beren5$event == "solids")
+avgFood <- mean(beren5$value[Feeds]
+avgFeed <- tapply(beren5$value[Feeds], beren5$age[Feeds], mean) 
+varFeed <- tapply(beren5$value[Feeds], beren5$age[Feeds], var)
+totalFeed <- tapply(beren5$value[Feeds], beren5$age[Feeds], sum)
+numFeeds <- tapply(beren5$value[Feeds], beren5$age[Feeds], length)
+cor(beren5$value[Feeds], beren5$age[Feeds])
+cor.test(beren5$value[Feeds], beren5$age[Feeds])
+berenCor <- cor.test(beren5$value[Feeds], beren5$age[Feeds])
+summary(berenCor)
+boxplot(beren5$value[Feeds] ~ beren5$bowel[Feeds] (xlab="number of bowel movements", ylab="amount of solids consumed")
+par(las=1, mar=c(5,5,1,1), mgp=c(2,0.5,0), tck=-0.01)
+plot(as.numeric(names(totalFeed)), totalFeed, type="b", pch=16, xlab="number of bowel movements", ylab="amount of solids consumed")
+pdf("r02c-totalSolidsBowel.pdf", height=4, width=4)
+plot(as.numeric(names(totalFeed)), totalFeed, type="c", pch=16, xlab="number of bowel movements", ylab="amount of solids consumed")
+abline(h=mean(totalFeed), lty=2, col='red')
+dev.off()
