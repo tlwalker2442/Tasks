@@ -31,6 +31,12 @@ edgelabels(text=Labs, cex=0.25)
 
 ?plot.phylo
 
+Question 3: plotTree(AnolisTree, offset=1, show.tip.label=FALSE) 
+
+Question 4: circular_tree(AnolisTree)
+
+Question 5: plotTree(AnolisTree, offset=1, show.tip.label=TRUE, tip.color="red") 
+
 Question 6:
 AnolisTree <- force.ultrametric(read.tree("https://jonsmitchell.com/data/anolis.tre"))
 n <- length (AnolisTree$tip.label)
