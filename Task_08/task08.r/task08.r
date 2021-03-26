@@ -33,7 +33,7 @@ edgelabels(text=Labs, cex=0.25)
 
 Question 3: plotTree(AnolisTree, offset=1, show.tip.label=FALSE) 
 
-Question 4: circular_tree(AnolisTree)
+Question 4: plotTree(AnolisTree, alighn.tip.label=TRUE, type="fan") 
 
 Question 5: plotTree(AnolisTree, offset=1, show.tip.label=TRUE, tip.color="red") 
 
